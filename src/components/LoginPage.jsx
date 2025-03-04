@@ -18,7 +18,12 @@ const LoginPage = () => {
 
     if (role === 'admin' && password === 'admin123' && username=== 'admin') {
       navigate('/admin'); // Redirect to Admin Page
-    } else {
+    } 
+    else if(role=='supervisor' && password === 'pass123' && username === 'sup1')
+    {
+      navigate('/supervisor');
+    }
+    else {
       setError('Incorrect password');
     }
     
