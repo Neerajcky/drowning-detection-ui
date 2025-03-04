@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import "./LoginPage.css"; // Ensure CSS file is correctly linked
-import "./AdminPage.css";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("lifeguard"); // Default value to avoid issues
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    console.log("Login function called");
+
     if (!username || !password || !role) {
-      setError('Please fill in all fields.');
+      setError("Please fill in all fields.");
       return;
     }
 
@@ -26,7 +28,36 @@ const LoginPage = () => {
     else {
       setError('Incorrect password');
     }
-    
+
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password, role }),
+      });
+
+      console.log("Response received:", response);
+
+      const data = await response.json();
+      console.log("Response data:", data);
+
+      if (!response.ok) {
+        throw new Error(data.error);
+      }
+
+      setError(""); // Clear any previous errors
+
+      if (role === "admin") {
+        navigate("/admin");
+      } else if (role === "lifeguard") {
+        navigate("/lifeguard");
+      } else if (role === "supervisor") {
+        navigate("/supervisor");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError(err.message);
+    }
   };
 
   return (
@@ -61,8 +92,10 @@ const LoginPage = () => {
 
         <button className="login-button" type="submit">Login</button>
 
+        {error && <p className="error-message">{error}</p>}
+
         <div className="forgot-password">
-          <a href="#">Forgot Password?</a>
+          <a href="/" onClick={(e) => e.preventDefault()}>Forgot Password?</a>
         </div>
       </form>
     </div>
