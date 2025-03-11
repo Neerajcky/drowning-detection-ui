@@ -1,0 +1,94 @@
+/* Center the entire login page */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background: url(../assets/background.jpg);
+    font-family: Arial, sans-serif;
+    background-size: cover;
+}
+
+/* Title styling */
+.login-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-align: center;
+}
+
+/* Form styling */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.6); /* Slight dark overlay */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 300px;
+}
+
+/* Input fields */
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Select Role */
+.role-selection {
+    margin-top: 10px;
+}
+
+.role-selection label {
+    color: white;
+    font-size: 1rem;
+}
+
+.role-selection select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Login Button */
+.login-button {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* Forgot Password */
+.forgot-password {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.forgot-password a {
+    color: #00bfff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}

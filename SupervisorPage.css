@@ -1,0 +1,90 @@
+/* SupervisorPage.css */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f4f7fc;
+  margin: 0;
+  padding: 0;
+}
+
+.supervisor-container {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.supervisor-heading {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2b2d42;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Upload Container */
+.upload-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.upload-container h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #007bff;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.upload-label:hover {
+  background: #0056b3;
+}
+
+.upload-icon {
+  margin-right: 10px;
+}
+
+.file-name {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.upload-button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 12px;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.upload-button:hover {
+  background: #218838;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .supervisor-heading {
+    font-size: 2.5rem;
+  }
+
+  .upload-container {
+    max-width: 90%;
+  }
+}
