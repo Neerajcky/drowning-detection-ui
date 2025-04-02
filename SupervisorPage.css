@@ -1,4 +1,3 @@
-/* SupervisorPage.css */
 body {
   font-family: "Poppins", sans-serif;
   background: #f4f7fc;
@@ -7,84 +6,170 @@ body {
 }
 
 .supervisor-container {
-  text-align: center;
-  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #eef2f7;
+  min-height: 100vh;
 }
 
 .supervisor-heading {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #2b2d42;
+  font-size: 2.5rem;
+  color: #1d3557;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Upload Container */
+/* Video Upload Section */
 .upload-container {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 450px;
-  margin: 0 auto;
-}
-
-.upload-container h2 {
-  color: #333;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
 }
 
 .upload-label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #007bff;
-  color: white;
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
   font-size: 1.2rem;
-  transition: 0.3s;
+  color: #333333;
+  margin-bottom: 10px;
 }
 
-.upload-label:hover {
-  background: #0056b3;
+.upload-button {
+  background-color: #1d3557;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.upload-icon {
-  margin-right: 10px;
+.upload-button:hover {
+  background-color: #457b9d;
 }
 
 .file-name {
   margin-top: 10px;
   font-size: 1rem;
-  color: #555;
+  color: #333;
 }
 
-.upload-button {
-  background: #28a745;
+/* Video Preview Section */
+.video-preview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.video-preview h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.video-preview img {
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Alert Logs Section */
+.alert-logs {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.alert-logs h2 {
+  font-size: 2rem;
+  color: #1d3557;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.table th, .table td {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.table th {
+  background-color: #1d3557;
+  color: #ffffff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2;
+}
+
+.table-bordered td, .table-bordered th {
+  border: 1px solid #ddd;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Drowning Alert Modal */
+.modal-header {
+  background-color: #ff6f61;
   color: white;
-  border: none;
-  padding: 12px;
-  margin-top: 15px;
-  font-size: 1.1rem;
+  border-bottom: none;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+}
+
+.modal-body {
+  font-size: 1.2rem;
+}
+
+.modal-footer {
+  justify-content: center;
+}
+
+button {
+  font-size: 1rem;
+}
+
+/* General Styles for Buttons */
+button {
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 6px;
-  transition: 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.upload-button:hover {
-  background: #218838;
+button:focus {
+  outline: none;
 }
 
-/* Responsive */
+/* Supervisor Page Responsive */
 @media (max-width: 768px) {
+  .supervisor-container {
+    padding: 10px;
+  }
+
   .supervisor-heading {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .upload-container {
-    max-width: 90%;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .video-preview img {
+    max-width: 100%;
   }
 }

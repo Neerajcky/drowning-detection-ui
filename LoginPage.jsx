@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./LoginPage.css"; // Ensure CSS file is correctly linked
 
 const LoginPage = () => {
@@ -11,56 +12,56 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(""); // Reset previous errors
+    setError("");
 
     if (!username || !password) {
-      setError("Please fill in all fields.");
-      return;
+        setError("❌ Please fill in all fields.");
+        return;
     }
 
-    // ✅ Admin Login (Hardcoded)
+    // ✅ Check for Admin Login (Hardcoded)
     if (role === "admin" && username === "admin" && password === "admin123") {
-      sessionStorage.setItem("role", "admin");
-      sessionStorage.setItem("username", "admin");
-      navigate("/admin");
-      return;
+        console.log("✅ Admin login successful");
+        localStorage.setItem("role", "admin");
+        localStorage.setItem("username", "admin");
+        alert("✅ Admin Login Successful!");
+        navigate("/admin"); // Redirect to Admin Page
+        return;
     }
-
-    // ✅ Supervisor & Lifeguard Authentication (DB-based)
-    const endpoint = `http://localhost:4050/login`; // ✅ Using unified backend login route
 
     try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lname: username, password, role }), // ✅ Ensure correct field names
-      });
+        const endpoint = role === "supervisor"
+            ? "http://localhost:4050/supervisor/login"
+            : "http://localhost:4050/lifeguard/login";
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Invalid credentials.");
-      }
+        console.log("📡 Sending Login Request:", { lname: username, password });
 
-      const data = await response.json();
-      console.log("✅ Login Successful:", data);
+        const response = await axios.post(endpoint, {
+            lname: username,
+            password
+        });
 
-      // ✅ Store session details
-      sessionStorage.setItem("role", data.role);
-      sessionStorage.setItem("username", username);
+        console.log("✅ Backend Response:", response.data);
 
-      // ✅ Redirect to respective dashboard
-      if (data.role === "supervisor") {
-        navigate("/supervisor");
-      } else if (data.role === "lifeguard") {
-        navigate("/lifeguard");
-      } else {
-        setError("Unknown role. Please contact support.");
-      }
-    } catch (err) {
-      console.error("❌ Login error:", err);
-      setError(err.message);
+        if (response.data.success) {
+            localStorage.setItem("userId", response.data.userId);
+            localStorage.setItem("role", response.data.role);
+
+            if (role === "supervisor") {
+                localStorage.setItem("supervisorId", response.data.userId);
+            }
+
+            alert("✅ Login Successful!");
+            navigate(`/${response.data.role.toLowerCase()}`);
+        } else {
+            setError("❌ Invalid credentials!");
+        }
+    } catch (error) {
+        console.error("❌ Login failed:", error.response?.data || error.message);
+        setError(error.response?.data?.error || "❌ Login failed. Please try again.");
     }
-  };
+};
+
 
   return (
     <div className="login-container">
@@ -92,12 +93,16 @@ const LoginPage = () => {
           </select>
         </div>
 
-        <button className="login-button" type="submit">Login</button>
+        <button className="login-button" type="submit">
+          Login
+        </button>
 
         {error && <p className="error-message">{error}</p>}
 
         <div className="forgot-password">
-          <a href="/" onClick={(e) => e.preventDefault()}>Forgot Password?</a>
+          <a href="/" onClick={(e) => e.preventDefault()}>
+            Forgot Password?
+          </a>
         </div>
       </form>
     </div>

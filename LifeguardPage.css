@@ -1,103 +1,134 @@
 /* LifeguardPage.css */
 body {
-    font-family: "Poppins", sans-serif;
-    background: #f4f7fc;
-    margin: 0;
-    padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f4f7fc;
+  margin: 0;
+  padding: 0;
+}
+
+.lifeguard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  color: #000;
+  min-height: 100vh;
+}
+
+/* Beautiful Heading */
+.lifeguard-heading {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #1d3557;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1.2s ease-in-out;
+  text-align: center;
+}
+
+/* Notification Box */
+.notification-box {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #f44336; /* Red color for alert */
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 2px solid #ff0000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification-box p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.discard-btn {
+  background-color: white;
+  color: #f44336;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.discard-btn:hover {
+  background-color: #fdd;
+}
+
+/* Video Section */
+.video-section {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.video-card {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.video-card p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .lifeguard-container {
-    text-align: center;
-    padding: 50px 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Beautiful Heading */
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .lifeguard-heading {
-    font-size: 3.5rem;
-    font-weight: bold;
-    color: #1d3557;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1.2s ease-in-out;
+    font-size: 2.5rem;
   }
-  
-  /* Monitoring Container */
-  .monitoring-container {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin: 20px auto;
-    animation: slideUp 1s ease-in-out;
+
+  .video-section {
+    max-width: 90%;
   }
-  
-  .info-text {
-    font-size: 1.3rem;
-    color: #444;
-    margin-bottom: 15px;
+
+  .notification-box {
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
   }
-  
-  /* Start Monitoring Button */
-  .monitoring-button {
-    background: #ff4b5c;
-    color: white;
-    border: none;
-    padding: 15px 20px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+
+  .discard-btn {
+    padding: 3px 8px;
+    font-size: 12px;
   }
-  
-  .monitoring-button:hover {
-    background: #d9364a;
-  }
-  
-  .play-icon {
-    margin-right: 10px;
-    font-size: 1.3rem;
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .lifeguard-heading {
-      font-size: 2.5rem;
-    }
-  
-    .monitoring-container {
-      max-width: 90%;
-    }
-  
-    .monitoring-button {
-      font-size: 1rem;
-    }
-  }
-  
+}
